@@ -7,7 +7,7 @@ function App() {
   const [ location, setLocation ] = useState('');
   const API_KEY = process.env.WEATHER_API_KEY;
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=bd8ce47b602572508e5b4bac2f9ade6d`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`;
 
 
   const searchLocation = (e) => {
@@ -64,7 +64,7 @@ function App() {
             </div>
           </div>
         }
-        
+
       </div>
     </div>
   );
