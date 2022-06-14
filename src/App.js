@@ -5,9 +5,10 @@ import axios from 'axios';
 function App() {
   const [ data, setData ] = useState({});
   const [ location, setLocation ] = useState('');
-  const API_KEY = process.env.WEATHER_API_KEY;
+  const API_KEY = process.env.REACT_APP_API_KEY;
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}`;
+
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${API_KEY}`;
 
 
   const searchLocation = (e) => {
@@ -41,25 +42,25 @@ function App() {
             <p>{data.name}</p>
           </div>
           <div className="app__topTemp">
-            {data.main ? <h1>{data.main.temp}° F</h1> : null}
+            {data.main ? <h1>{Math.round(data.main.temp)}° F</h1> : null}
           </div>
           <div className="app__topDescription">
             {data.weather ? <p>{data.weather[ 0 ].main}</p> : null}
           </div>
         </div>
 
-        {data.main != undefined &&
+        {data.main !== undefined &&
           <div className="app__bottom">
             <div className="app__bottomFeels">
-              {data.main ? <p className="bold">{data.main.feels_like}° F</p> : null}
+              {data.main ? <p className="bold">{Math.round(data.main.feels_like)}° F</p> : null}
               <p>Feels Like</p>
             </div>
             <div className="app__bottomHumidity">
-              {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
+              {data.main ? <p className="bold">{Math.round(data.main.humidity)}%</p> : null}
               <p>Humidity</p>
             </div>
             <div className="app__bottomWind">
-              {data.wind ? <p className="bold">{data.wind.speed}MPH</p> : null}
+              {data.wind ? <p className="bold">{Math.round(data.wind.speed)}MPH</p> : null}
               <p>Wind Speed</p>
             </div>
           </div>
